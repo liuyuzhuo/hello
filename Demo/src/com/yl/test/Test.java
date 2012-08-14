@@ -13,6 +13,7 @@ public class Test {
 		if(day>0){
 			return eat((s+1)*2,day);
 		}
+		System.out.println("qqqq");
 		return s;
 	}
 

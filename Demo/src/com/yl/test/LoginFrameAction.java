@@ -21,6 +21,7 @@ public class LoginFrameAction implements ActionListener {
 				JOptionPane.showMessageDialog(null,"µÇÂ¼Ê§°Ü");
 			}
 		}else if("È¡Ïû".equals(info)){
+			System.out.println("aaaaaa");
 			loginFrame.dispose();
 		}
 	}
