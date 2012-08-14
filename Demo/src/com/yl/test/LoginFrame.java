@@ -2,10 +2,14 @@ package com.yl.test;
 
 import java.awt.Cursor;
 import java.awt.GridLayout;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -39,6 +43,24 @@ public class LoginFrame extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(200, 200);
 		this.setLocationRelativeTo(null);
+		this.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent event) {
+				int a = event.getKeyCode();
+				if (a == 10) {
+					if ("admin".equals(getUserName())
+							&& "12345".equals(getPassword())) {
+//						this.dispose();
+						new MainFrame();
+					} else {
+						JOptionPane.showMessageDialog(null, "µÇÂ¼Ê§°Ü");
+					}
+				}
+			}
+		});
+	}
+	
+	private void Logindispose(){
+		this.dispose();
 	}
 
 	private JPanel createNorthPanel() {

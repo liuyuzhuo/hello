@@ -16,7 +16,9 @@ public class LoginFrameAction implements ActionListener {
 		String info = command.getActionCommand();
 		if("µÇÂ¼".equals(info)){
 			if("admin".equals(loginFrame.getUserName())&&"12345".equals(loginFrame.getPassword())){
-				JOptionPane.showMessageDialog(null,"µÇÂ¼³É¹¦");
+//				JOptionPane.showMessageDialog(null,"µÇÂ¼³É¹¦");
+				loginFrame.dispose();
+				new MainFrame();
 			}else {
 				JOptionPane.showMessageDialog(null,"µÇÂ¼Ê§°Ü");
 			}
