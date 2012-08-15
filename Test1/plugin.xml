@@ -99,7 +99,13 @@
       <view
             class="test1.MyView1"
             id="Test1.MyView1"
-            name="name"
+            name="myView1"
+            restorable="true">
+      </view>
+      <view
+            class="test1.ViewPart1"
+            id="Test1.ViewPart"
+            name="test status"
             restorable="true">
       </view>
    </extension>

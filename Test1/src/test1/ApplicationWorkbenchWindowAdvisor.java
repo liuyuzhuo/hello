@@ -1,5 +1,6 @@
 package test1;
 
+import org.eclipse.jface.action.IStatusLineManager;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ShellAdapter;
 import org.eclipse.swt.events.ShellEvent;
@@ -62,6 +63,9 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 		configurer.setShowStatusLine(false);
 		configurer.setTitle("Status Line Example");
 		configurer.setShowStatusLine(true);
+		IStatusLineManager statusline = getWindowConfigurer()
+				.getActionBarConfigurer().getStatusLineManager();
+		statusline.setMessage(null, "Status line is ready");
 	}
 
 	// Add a listener to the shell
@@ -116,9 +120,8 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 	private TrayItem initTaskItem(IWorkbenchWindow window) {
 		final Tray tray = window.getShell().getDisplay().getSystemTray();
 		TrayItem trayItem = new TrayItem(tray, SWT.NONE);
-		trayImage = AbstractUIPlugin.imageDescriptorFromPlugin(
-				"Test1", "/icons/alt_about.gif")
-				.createImage();
+		trayImage = AbstractUIPlugin.imageDescriptorFromPlugin("Test1",
+				"/icons/alt_about.gif").createImage();
 		trayItem.setImage(trayImage);
 		trayItem.setToolTipText("TrayItem");
 		return trayItem;
