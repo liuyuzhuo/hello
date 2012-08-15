@@ -56,6 +56,12 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 			// Create exit and about action on the icon
 			hookPopupMenu();
 		}
+		IWorkbenchWindowConfigurer configurer = getWindowConfigurer();
+		configurer.setInitialSize(new Point(400, 300));
+		configurer.setShowCoolBar(false);
+		configurer.setShowStatusLine(false);
+		configurer.setTitle("Status Line Example");
+		configurer.setShowStatusLine(true);
 	}
 
 	// Add a listener to the shell

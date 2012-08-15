@@ -35,9 +35,21 @@
          point="org.eclipse.ui.menus">
       <menuContribution
             allPopups="false"
-            locationURI="Test1.menuContribution3">
+            locationURI="menu:org.eclipse.ui.main.menu">
          <menu
                label="label">
+            <command
+                  commandId="test1.SelectionDialog"
+                  style="push">
+            </command>
+            <command
+                  commandId="Test1.command2"
+                  style="push">
+            </command>
+            <command
+                  commandId="Test1.command3"
+                  style="push">
+            </command>
             <command
                   commandId="Test1.command4"
                   style="push">
@@ -49,8 +61,24 @@
          id="Test1.exitCommand"
          point="org.eclipse.ui.commands">
       <command
-            id="Test1.exitCommand"
-            name="name">
+            defaultHandler="test1.SelectionDialog"
+            id="test1.SelectionDialog"
+            name="SelectDialog">
+      </command>
+      <command
+            defaultHandler="test1.OpenDialog"
+            id="Test1.command2"
+            name="OpenDialog">
+      </command>
+      <command
+            defaultHandler="test1.OpenMyDialog"
+            id="Test1.command3"
+            name="OpenMyDialog">
+      </command>
+      <command
+            defaultHandler="test1.ShowWizard"
+            id="Test1.command4"
+            name="Wizard">
       </command>
    </extension>
    <extension
@@ -58,6 +86,19 @@
       <view
             class="test1.MyView"
             id="Test1.MyView"
+            name="备注"
+            restorable="true">
+         <description>
+            this is my view
+         </description>
+      </view>
+      <category
+            id="Test1.category1"
+            name="name">
+      </category>
+      <view
+            class="test1.MyView1"
+            id="Test1.MyView1"
             name="name"
             restorable="true">
       </view>
