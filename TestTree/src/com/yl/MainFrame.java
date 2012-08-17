@@ -1,14 +1,21 @@
 package com.yl;
 
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.layout.FillLayout;
-import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.RowData;
+import org.eclipse.swt.layout.RowLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.MessageBox;
+import org.eclipse.swt.widgets.Scale;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TabFolder;
 import org.eclipse.swt.widgets.TabItem;
@@ -17,9 +24,6 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
-import org.eclipse.swt.widgets.Scale;
-import org.eclipse.swt.layout.RowLayout;
-import org.eclipse.swt.layout.RowData;
 
 public class MainFrame {
 	private static Table table_1;
@@ -29,8 +33,9 @@ public class MainFrame {
 	 */
 	public static void main(String[] args) {
 		Display display = new Display();
-		Shell shell = new Shell();
+		final Shell shell = new Shell();
 		shell.setSize(505, 458);
+		shell.setText("主界面");
 		shell.setLayout(new FillLayout(SWT.HORIZONTAL));
 
 		Composite co1 = new Composite(shell, SWT.NONE);
@@ -47,6 +52,26 @@ public class MainFrame {
 		ti2.setText("第二页");
 		Group gro2 = new Group(tf, SWT.NONE);
 		ti2.setControl(gro2);
+		gro2.setLayout(null);
+		Button button = new Button(gro2, SWT.NONE);
+		button.setText("点击我");
+		button.setBounds(50, 50, 80, 40);
+		button.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseUp(MouseEvent e) {
+				MessageBox box = new MessageBox(shell, SWT.BORDER|SWT.YES|SWT.NO);
+				box.setText("提示框");
+				box.setMessage("您单击了我哦！");
+				box.open();
+				MessageDialog dialog = new MessageDialog(shell, "aa", null, "hello", 0, null, 0);
+				boolean flag = MessageDialog.openConfirm(Display.getCurrent().getActiveShell(), "确认消息对话框", "确定要保存文件吗?");
+				if(flag){
+					System.out.println("确定");
+				}else{
+					System.out.println("否");
+				}
+			}
+		});
 
 		TabItem ti3 = new TabItem(tf, SWT.NONE);
 		ti3.setText("第三页");
